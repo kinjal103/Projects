@@ -1,0 +1,24 @@
+Your Account Details
+Your account is at the final stage of activation, in a few minutes you will be able to login and manage your website.
+Main Hosting Details
+Control panel username
+	b22_13644034
+Control panel password 	**********
+Control panel URL
+	http://cpanel.byethost22.com
+MySQL username
+	b22_13644034
+MySQL password
+	**********
+MySQL hostname
+	sql310.byethost22.com
+FTP username
+	b22_13644034
+FTP password
+	**********
+FTP host name 	185.27.134.8
+
+	
+Your Website URL's
+Home page
+	http://hpquizhtml.byethost22.com

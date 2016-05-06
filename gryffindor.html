@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>The Gryffindor</title>
+<link rel="stylesheet" type="text/css" href="fin_css.css" />
+<script type="text/JavaScript">
+function dumb()
+{
+	document.getElementById("dumimg").innerHTML="<img height=150px width=100px src=\"albus.jpg\">";
+}
+function undumb()
+{
+	document.getElementById("dumimg").innerHTML="";
+}
+function har()
+{
+	document.getElementById("dumimg").innerHTML="<img height=150px width=100px src=\"harry.jpg\">";
+}
+function unhar()
+{
+	document.getElementById("dumimg").innerHTML="";
+}
+</script>
+</head>
+<body>
+<center><br/></center>
+<h1 style="color:red">The Gryffindor</h1><br/>
+<table><tr><td><h2><span style="color:#fff">The house is known for their student's bravery and courage!<br/>Even <span id="dumb" onmouseover="dumb()" onmouseout="undumb()">dumbledor</span> himself was in Gryffindor<br/>The founder of this house is Godric Gryffindor<br/>Famous student from this house is <span id="harry" onmouseover="har()" onmouseout="unhar()">Harry Potter</span></span></h2></td><td><span id="dumimg"></span></td></tr></table>
+</body>
+</html>

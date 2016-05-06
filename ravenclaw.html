@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>The Ravenclaw</title>
+<link rel="stylesheet" type="text/css" href="fin_css.css" />
+<script type="text/JavaScript">
+function dumb()
+{
+	document.getElementById("dumimg").innerHTML="<img height=150px width=100px src=\"flitwick.jpg\">";
+}
+function undumb()
+{
+	document.getElementById("dumimg").innerHTML="";
+}
+function har()
+{
+	document.getElementById("dumimg").innerHTML="<img height=150px width=100px src=\"luna.jpg\">";
+}
+function unhar()
+{
+	document.getElementById("dumimg").innerHTML="";
+}
+</script>
+</head>
+<body>
+<center><br/></center>
+<h1 style="color:red">The Ravenclaw</h1><br/>
+<table><tr><td><h2><span style="color:#fff">The house is known for their student's willpower and cleverness!<br/>Even <span id="dumb" onmouseover="dumb()" onmouseout="undumb()">Professor Flitwick</span> himself was in Hufflepuff<br/>The founder of this house is Ravena Ravenclaw<br/>Famous student from this house is <span id="harry" onmouseover="har()" onmouseout="unhar()">Luna Lovegood</span></span></h2></td><td><span id="dumimg"></span></td></tr></table>
+</body>
+</html>

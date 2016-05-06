@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>The Slytherine</title>
+<link rel="stylesheet" type="text/css" href="fin_css.css" />
+<script type="text/JavaScript">
+function dumb()
+{
+	document.getElementById("dumimg").innerHTML="<img height=150px width=100px src=\"voldemort.jpg\">";
+}
+function undumb()
+{
+	document.getElementById("dumimg").innerHTML="";
+}
+function har()
+{
+	document.getElementById("dumimg").innerHTML="<img height=150px width=100px src=\"malfoy.jpg\">";
+}
+function unhar()
+{
+	document.getElementById("dumimg").innerHTML="";
+}
+</script>
+</head>
+<body>
+<center><br/></center>
+<h1 style="color:red">The Slytherine</h1><br/>
+<table><tr><td><h2><span style="color:#fff">The house is known for their student's cunning and pureblood!<br/>Even <span id="dumb" onmouseover="dumb()" onmouseout="undumb()">voldemort</span> himself was in Gryffindor<br/>The founder of this house is Salazar Slytherin<br/>Famous student from this house is <span id="harry" onmouseover="har()" onmouseout="unhar()">Draco Malfoy</span></span></h2></td><td><span id="dumimg"></span></td></tr></table>
+</body>
+</html>
