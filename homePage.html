@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>
+	Data Usage Calculator
+</title>
+
+<!---External stylesheets--->
+<link rel="stylesheet" type="text/css" href="animate.css">
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css" href="font-awesome.css">
+
+<style>
+	body {
+		background-image: url("./images/stock-illustration-57505306-abstract-background-calculator.gif");
+		text-align: center;		
+		font-family: "Comic Sans MS";
+		color: black;
+	}
+	.background {
+		border: 2x solid black;
+	}
+	.transbox {
+		margin: 15%;
+		margin-left: 25%;
+		margin-right: 25%;
+		background-color: #ffffff;
+		border: 2px solid black;
+		opacity: 0.95;
+		filter: alpha(opacity = 95);
+		padding-bottom: 1%;
+	}
+	
+	#error_msg {
+		color: red;
+	}
+</style>
+
+<!---Scripts included--->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="canvasjs.min.js"></script>
+<script type="text/javascript" src="Chart.js"></script>
+
+<script type="text/javascript">
+	
+	//Initial animations
+	$(document).ready(function(){
+		$("#outputData").hide();
+		$("#used_data").addClass("animated bounce");
+		$("#saved_data").addClass("animated shake");
+	});
+	
+	//function to calculate % of the saved data and make a donut chart
+	function calculate()
+	{
+		//making div visible and invisible
+		$("#inputData").hide(2000);
+		$("#outputData").show(1000);
+		
+		//calculation
+		var use_data = parseFloat($("#used_data").val());
+		var save_data = parseFloat($("#saved_data").val());
+		var save_data_percenatge = (save_data * 100) / (save_data + use_data);
+		save_data_percenatge = save_data_percenatge.toFixed(2);
+		var use_data_percenatge = 100 - save_data_percenatge;
+		
+		//making a chart
+		var data = [
+		{
+			label: "Saved Data",
+			value: save_data_percenatge,
+			color: "blue",
+			highlight: "skyblue"
+		},
+		{
+			label: "Used Data",
+			value: use_data_percenatge,
+			color: "green",
+			highlight: "yellowgreen"
+		}
+		];
+		
+		var donutOptions = {
+			segmentShowStroke: true,
+			animateScale: true,
+			animationSteps: 150
+		}
+		
+		var totalData = document.getElementById("chartCanvas").getContext("2d");
+		new Chart(totalData).Doughnut(data, donutOptions);
+	}
+	
+	//function for validation of the input
+	function validate()
+	{
+		var use_data = $("#used_data").val();
+		var save_data = $("#saved_data").val();
+		
+		//for keeping a record of validation
+		var flag = 0;
+		
+		//error checking for empty data fields
+		if((use_data == null || use_data == "") || (save_data == null || save_data == ""))
+		{
+			document.getElementById("error_msg").innerHTML = "Error: You must enter data for further process!";
+		}
+		else
+		{
+			//error checking for the number type of the data
+			if(!isNaN(use_data) && !isNaN(save_data))
+			{
+				//error check for negative number
+				if((parseFloat(use_data) <=0) || parseFloat(save_data) < 0)
+				{
+					document.getElementById("error_msg").innerHTML = "Error: Data must be greater than 0!";
+					flag = 0;
+				}
+				//error check for the amount of the data
+				else if(parseFloat(use_data) < parseFloat(save_data))
+				{					
+					document.getElementById("error_msg").innerHTML = "Error: Used data must be greater than or equal saved data!";
+					flag = 0;
+				}
+				else
+				{
+					flag = 1;
+				}
+			}
+			else
+			{
+				document.getElementById("error_msg").innerHTML = "Error: You must enter a number!";
+				flag = 0;
+			}
+			
+			//if the validation is successful call the function calculate()
+			if(flag == 1)
+			{
+				calculate();
+			}
+		}
+	}
+	
+	//inforamation on input type for used data
+	function used_data_info()
+	{
+		$("#used_div").append("<p style=\"color: #FF0080;\"><i>Enter the number of data you have used.</i></p>");
+	}
+	
+	//inforamation on input type for saved data
+	function saved_data_info()
+	{
+		$("#saved_div").append("<p style=\"color: #FF0080;\"><i>Enter the number of data you have saved.</i></p>");
+	}
+	
+</script>
+</head>
+
+<body>
+<!--form name="myForm" -->
+
+<!---division for main background--->
+<div class="container-fluid background" id = "main_div">
+	
+	<!----division for taking input (transparent box)-->
+	<div class="transbox" id="inputData">
+		<h2 class="text-center">Data Usage Calculator</h2>
+		<br>
+		<div id="used_div"><b>Used Data: <input type="text" name="used_data" id="used_data" tabindex="1"> <button type="button" title="Number of data you've used." class="btn btn-sm btn-info" id="used_data_info_button" onclick="used_data_info()">?</button></b></div>
+		<br><br>
+		<div id="saved_div"><b>Saved Data: <input type="text" name="saved_data" id="saved_data" tabindex="2"> <button type="button" title="Number of data you've saved." class="btn btn-sm btn-info" id="saved_data_info_button" onclick="saved_data_info()">?</button></b></div>
+		<br>
+		<input type="button" class="btn btn-lg btn-primary" value="Submit" name="subnit_button" id="subnit_button" tabindex="3" onclick="validate()">
+		<br><br>
+		<p id="error_msg"></p>
+	</div>
+	
+	<!---division for displaying an output (chart)--->
+	<div class="transbox" id="outputData" width="256" height="256">
+		<h2 class="text-center">Data Usage Calculator</h2>
+		<br>
+		<canvas id="chartCanvas" width="256" height="256"></canvas>
+		<br><br>
+		<p><input type="button" style="background-color: blue; disabled: true;">Saved Data</button>      <input type="button" style="background-color: green; disabled: true;">Used Data</button></p>
+		<br>
+		<input type="button" value="Re-enter values" class="btn btn-primary" onclick="location.reload()"></button>
+		<br>
+	</div>
+	<!---End of the division "outputData"--->
+</div>
+<!---End of the division "inputData"--->
+<!--/form-->
+</body>
+</html>
