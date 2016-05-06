@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ForYou</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_feelings">FeelingsActivity</string>
+    <string name="title_activity_happy_moments">HappyMoments</string>
+    <string name="title_activity_sad_moments">SadMoments</string>
+    <string name="title_activity_lovely_moments">LovelyMoments</string>
+    <string name="title_activity_excited_moments">ExcitedMoments</string>
+    <string name="title_activity_lonely_moments">LonelyMoments</string>
+    <string name="title_activity_family_time">FamilyTime</string>
+    <string name="title_activity_missing_me">MissingMe</string>
+</resources>
