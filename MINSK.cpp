@@ -12,8 +12,8 @@ class Quadratic
 public:
     void setValue()
     {
-        cout << "\nThe general quadratic formula is:\nax^2 + bx + c";
-        cout << "\nSome conditions for being the quadratic equation valid:\n1. a must NOT ne equal to 0.\n2. b^2 >> 4ac is NOT valid.";
+        cout << "\nThe general quadratic formula is:\nax^2 + bx + c\n";
+        cout << "\nSome conditions for being the quadratic equation valid:\n1. a must NOT ne equal to 0.\n2. b^2 >> 4ac is NOT valid.\n";
         cout << "\nPlease enter the values for a, b and c: ";
         
         A:
