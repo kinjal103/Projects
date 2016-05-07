@@ -12,7 +12,7 @@ class Quadratic
 public:
     void setValue()
     {
-        cout << "\nThe general quadratic formula is:\nax^2 + bx + c\n";
+        cout << "\nThe general quadratic formula is:\nax^2 + bx + c = 0\n";
         cout << "\nSome conditions for being the quadratic equation valid:\n1. a must NOT ne equal to 0.\n2. b^2 >> 4ac is NOT valid.\n";
         cout << "\nPlease enter the values for a, b and c: ";
         
@@ -94,16 +94,56 @@ public:
     };
 };
 
-using namespace std;
+class Cubic
+{
+    float a, b, c, d;
+    float real1, real2, real3;
+public:
+    void setValue()
+    {
+        cout << "\nGeneral cubical equation is:\nax^3 + bx^2 + cx + d = 0\n";
+        cout << "\nThere are some conditions to be an equation a cubical equation:\n1. \'a\' must NOT be equal to 0.\n";
+        cout << "\nPlease enter the values for a, b, c and d:";
+        
+        B:
+        cout << "\na: ";
+        cin >> a;
+        
+        if(a == 0)
+        {
+            cout << "This value of \'a\' is violating 1st condition.\nPlease enter the appropriate value of \'a\'.\n\'a\' must NOT be equal to 0.\n";
+            goto B;
+        }
+        
+        cout << "\nb: ";
+        cin >> b;
+        
+        cout << "\nc: ";
+        cin >> c;
+        
+        cout << "\nd: ";
+        cin >> d;
+        
+        root(a, b, c, d);
+    };
+    
+    void root(float a, float b, float c, float d)
+    {
+        cout << a << b << c << d;
+    };
+};
 
 int main()
 {
-   cout << "Hello World" << endl; 
+   //cout << "Hello World" << endl; 
    
    //Quadratic equation
    Quadratic quadratic;
    quadratic.setValue();
    
+   //Cubic equation
+   Cubic cubic;
+   cubic.setValue();
+   
    return 0;
 }
-
