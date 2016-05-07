@@ -98,6 +98,7 @@ class Cubic
 {
     float a, b, c, d;
     float real1, real2, real3;
+    float i1, i2;
 public:
     void setValue()
     {
@@ -129,7 +130,66 @@ public:
     
     void root(float a, float b, float c, float d)
     {
-        cout << a << b << c << d;
+        float f, g, h;
+        
+        f = ((3 * c / a) - ((b * b) / (a * a))) / 3;
+        g = (((2 * b * b * b) / (a * a * a)) - ((9 * b * c) / (a * a)) + ((27 * d) / a)) / 27;
+        h = (((g * g) / 4) + ((f * f * f) / 27));
+        
+        if(h > 0)
+        {
+            float r, s, t, u;
+            
+            cout << "\nOnly one real and two imaginary roots are possible:\n";
+            
+            r = ((-g / 2) + sqrt(h));
+            s = cbrt(r);
+            t = ((-g / 2) - sqrt(h));
+            u = cbrt(t);
+            
+            real1 = ((s + u) - (b / (3 * a)));
+            
+            real2 = (((-(s + u)) / 2) - (b / (3 * a)));
+            
+            i1 = ((s - u) * sqrt(3)) / 2;
+            
+            cout << "\nReal root: " << real1;
+            cout << "\nComplex root 1: " << real2 << " + i " << i1;
+            cout << "\nComplex root 2: " << real2 << " - i " << i1;
+        }
+        else if(h <= 0)
+        {
+            if(f == 0 && g == 0)
+            {
+                cout << "\nAll roots are real and equal:";
+                
+                real1 = -(cbrt(d / a));
+                
+                cout << "\nRoot 1 = Root 2 = Root 3 : " << real1;
+            }
+            else
+            {
+                float i, j, k, l, m, n, p;
+                
+                cout << "\nAll 3 roots are real:";
+                
+                i = sqrt(((g * g) / 4) - h);
+                j = cbrt(i);
+                k = acos(-(g / (2 * i)));
+                l = -j;
+                m = cos(k / 3);
+                n = sqrt(3) * sin(k / 3);
+                p = -(b / (3 * a));
+                
+                real1 = (2 * j) * cos(k / 3) - (b / (3 * a));
+                real2 = (l * (m + n)) + p;
+                real3 = (l * (m - n)) + p;
+                
+                cout << "\nRoot 1: " << real1;
+                cout << "\nRoot 2: " << real2;
+                cout << "\nRoot 3: " <<real3;
+            }
+        }
     };
 };
 
