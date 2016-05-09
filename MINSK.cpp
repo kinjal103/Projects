@@ -32,10 +32,10 @@ public:
         cout << "\nc: ";
         cin >> c;
         
-        root (a, b, c);
+        root ();
     };
     
-    void root(float, float, float)
+    void root()
     {
         double b2, _4ac;
         
@@ -125,10 +125,10 @@ public:
         cout << "\nd: ";
         cin >> d;
         
-        root(a, b, c, d);
+        root();
     };
     
-    void root(float a, float b, float c, float d)
+    void root()
     {
         float f, g, h;
         
@@ -193,17 +193,105 @@ public:
     };
 };
 
+class Prime
+{
+    int n;
+public:
+    void setValue()
+    {
+        D:
+        cout << "\nPrime number is the number which number has no factor.";
+        cout << "\nEnter the number to check whether that number is prime or not: ";
+        cin >> n;
+        
+        if(n <= 0)
+        {
+            cout << "\nWe can check for only positive numbers (zero excluded).\nPlease enter appropriate number.\n";
+            goto D;
+        }
+        
+        checkPrime();
+    };
+    
+    void checkPrime()
+    {
+        int i, squareRoot;
+        if (n == 1 || n == 2)
+        {
+            cout << "\nNumber " << n << " is a prime number.";
+        }
+        else if (n % 2 == 0)
+        {
+            cout << "\nNumber " << n << " is not a prime number.";
+        }
+        else
+        {
+            squareRoot = (sqrt(n));
+            
+            //cout << squareRoot;
+            for(i = 2; i <= squareRoot; i++)
+            {
+                if(n % i == 0)
+                {
+                    cout << "\nNumber " << n << " is not a prime number.";
+                    return;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            cout << "\nNumber " << n << " is a prime number.";
+        }
+    };
+};
+
 int main()
 {
-   //cout << "Hello World" << endl; 
+   int ch;
+   char c;
    
-   //Quadratic equation
-   Quadratic quadratic;
-   quadratic.setValue();
+   C:
+   cout << "\nWhat do you want to solve?\n";
+   cout << "\n1. Quadratic equation? (Press 1)";
+   cout << "\n2. Cubical equation? (Press 2)";
+   cout << "\n3. Checking of prime number? (Press 3)\n";
    
-   //Cubic equation
-   Cubic cubic;
-   cubic.setValue();
+   cin >> ch;
+   
+   switch(ch)
+   {
+        case 1:
+            //Quadratic equation
+            Quadratic quadratic;
+            quadratic.setValue();
+            break;
+        case 2:
+            //Cubic equation
+            Cubic cubic;
+            cubic.setValue();         
+            break;
+        case 3:
+            //Prime number
+            Prime prime;
+            prime.setValue();
+            break;
+        default:
+            cout << "\n\nPlease enter appropriate choice.\n";
+            goto C;
+   };
+   
+   cout << "\n\nDo you want to solve one more thing? (Press Y/y or N/n)\n";
+   cin >> c;
+   
+   if (c == 'y' || c == 'Y')
+   {
+       goto C;
+   }
+   else
+   {
+       return 0;
+   }
    
    return 0;
 }
